@@ -7,16 +7,18 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->command->info('  > Start seeding...');
+        $this->command->newLine();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $startTime = microtime(true);
+
+        $this->call(BaseDatabaseSeeder::class);
+        $this->call(MasterDatabaseSeeder::class);
+
+        $endTime = round(microtime(true) - $startTime, 2);
+
+        $this->command->info("  > ✔ OK: Took {$endTime} seconds.");
     }
 }
