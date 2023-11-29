@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             // ->passwordReset()
             // ->emailVerification()
             // ->profile()
-            ->authGuard('web:admin')
+            ->authGuard('admin')
             ->databaseNotifications()
             ->colors(['primary' => Color::Indigo])
             ->discoverResources(

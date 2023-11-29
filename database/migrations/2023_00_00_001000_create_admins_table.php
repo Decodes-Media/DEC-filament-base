@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->timestamp('password_updated_at')->nullable();
             $table->rememberToken();
             $table->boolean('is_active')->default(true);

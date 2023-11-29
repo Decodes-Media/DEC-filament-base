@@ -29,11 +29,15 @@ class AppServiceProvider extends ServiceProvider
 
         Collection::macro('paginate', app(CollectionPaginate::class)());
 
-        Relation::enforceMorphMap(array_flip(config('base.model_names')));
+        Relation::enforceMorphMap(array_flip(config('base.model_morphs')));
 
-        Model::preventLazyLoading(App::isLocal());
+        Model::preventLazyLoading(App::isLocal()); // safe on production
 
-        // Paginator::useBootstrapFive();
+        $this->loadJsonTranslationsFrom(lang_path('json/1.base'));
+        $this->loadJsonTranslationsFrom(lang_path('json/2.permission'));
+        $this->loadJsonTranslationsFrom(lang_path('json/3.extra'));
+
+        // Paginator::useTailwind(); // or useBootstrapFive();
 
         // View::share('siteSetting', app(SiteSetting::class));
     }

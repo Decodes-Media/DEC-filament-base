@@ -2,7 +2,11 @@
 
 return [
 
-    'superadmin_email' => 'super@decodes.com',
+    /*
+    |--------------------------------------------------------------------------
+    | Routing
+    |--------------------------------------------------------------------------
+    */
 
     'route' => [
         'web_domain' => env('ROUTE_WEB_DOMAIN'),
@@ -13,18 +17,105 @@ return [
         'admin_path' => env('ROUTE_ADMIN_PATH'),
     ],
 
-    'api_key' => env('API_KEY', 'd3c4p1k3yhehehe'),
+    /*
+    |--------------------------------------------------------------------------
+    | API
+    |--------------------------------------------------------------------------
+    */
 
-    'api_signature_enabled' => env('API_SIGNATURE_ENABLED', true),
+    'api_key' => env('API_KEY', 'hehehed3c4p1k3yhehehe'),
+
+    'api_signature_enabled' => env('API_SIGNATURE_ENABLED', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Access
+    |--------------------------------------------------------------------------
+    */
+
+    'superadmin_email' => 'super@decodes.com',
+
+    'permissions' => [
+        'admin' => [ // guard
+            'user.*' => 'User — All Access',
+            'user.view' => 'User — View',
+            'user.create' => 'User — Create',
+            'user.update' => 'User — Update',
+            'user.delete' => 'User — Delete',
+            'user.export' => 'User — Export',
+            'page.*' => 'Page — All Access',
+            'page.view' => 'Page — View',
+            'page.create' => 'Page — Create',
+            'page.update' => 'Page — Update',
+            'page.delete' => 'Page — Delete',
+            'page.export' => 'Page — Export',
+            'admin.*' => 'Admin — All Access',
+            'admin.view' => 'Admin — View',
+            'admin.create' => 'Admin — Create',
+            'admin.update' => 'Admin — Update',
+            'admin.delete' => 'Admin — Delete',
+            'admin.export' => 'Admin — Export',
+            'role.*' => 'Role — All Access',
+            'role.view' => 'Role — View',
+            'role.create' => 'Role — Create',
+            'role.update' => 'Role — Update',
+            'role.delete' => 'Role — Delete',
+            'role.export' => 'Role — Export',
+            'system.*' => 'System — All Access',
+            'system.log_activity' => 'System — Log Activity',
+            'system.log_application' => 'System — Log Application',
+            'system.site_setting' => 'System — Site Setting',
+            'system.site_health — Site Health' => 'System — Site Health',
+            'system.site_backup' => 'System — Site Backup',
+        ],
+    ],
+
+    'roles' => [
+        'admin' => [ // guard
+            'Superadmin' => 'Allow all access',
+            'Admin' => 'Allow certain access',
+        ],
+    ],
+
+    'role_permissions' => [
+        'admin' => [ // guard
+            'Superadmin' => [
+                'admin.*',
+                'role.*',
+                'system.*',
+            ],
+            'Admin' => [
+                'user.*',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Lookup
+    |--------------------------------------------------------------------------
+    */
+
+    'model_morphs' => [
+        \App\Models\User::class => 'User',
+        \App\Models\Admin::class => 'Admin',
+        \App\Models\Role::class => 'Role',
+        \App\Models\Permission::class => 'Permission',
+    ],
+
+    'model_policies' => [
+        // \App\Models\User::class => \App\Policies\UserPolicy::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Miscelanious
+    |--------------------------------------------------------------------------
+    */
 
     'records_limit' => [
         'admins' => 256,
         'roles' => 12,
-    ],
-
-    'model_names' => [
-        \App\Models\User::class => 'User',
-        \App\Models\Admin::class => 'Admin',
     ],
 
 ];

@@ -15,7 +15,8 @@
     "kodepandai/laravel-api-response": "dev-next",
     "laravel/framework": "^10.10",
     "laravel/sanctum": "^3.3",
-    "laravel/tinker": "^2.8"
+    "laravel/tinker": "^2.8",
+    "spatie/laravel-permission": "^6.1"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",
@@ -25,6 +26,7 @@
     "nunomaduro/larastan": "^2.6",
     "pestphp/pest": "^2.24",
     "pestphp/pest-plugin-laravel": "^2.2",
+    "pestphp/pest-plugin-livewire": "^2.1",
     "spatie/laravel-ignition": "^2.0"
   },
   "autoload": {
@@ -39,32 +41,32 @@
   },
   "autoload-dev": {
     "psr-4": {
-        "Tests\\": "tests/"
+      "Tests\\": "tests/"
     }
-},
+  },
   "scripts": {
     "analyse": "@php vendor/bin/phpstan analyse",
     "fresh": [
-        "php artisan migrate:fresh --drop-views",
-        "php artisan db:seed DatabaseSeeder"
+      "php artisan migrate:fresh --drop-views",
+      "php artisan db:seed DatabaseSeeder"
     ],
     "lint": "@php vendor/bin/pint",
     "pest": "@php vendor/bin/pest --stop-on-failure",
     "pest:admin": "@php vendor/bin/pest tests/feature/Admin --stop-on-failure",
     "post-autoload-dump": [
-        "git config core.hooksPath ./.githooks",
-        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-        "@php artisan package:discover --ansi",
-        "@php artisan filament:upgrade"
+      "git config core.hooksPath ./.githooks",
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi",
+      "@php artisan filament:upgrade"
     ],
     "post-update-cmd": [
-        "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-        "@php artisan filament:upgrade"
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+      "@php artisan filament:upgrade"
     ],
     "test": [
-        "@lint",
-        "@analyse",
-        "@pest"
+      "@lint",
+      "@analyse",
+      "@pest"
     ]
   },
   "extra": {

@@ -7,6 +7,7 @@ parameters:
     - config
     - database
     - lang
+    - packages
     - resources/views
     - routes
   excludePaths:
@@ -16,4 +17,4 @@ parameters:
   treatPhpDocTypesAsCertain: false
   ignoreErrors:
     - '#Access to an undefined property (.*)Model(.*)#'
-    - '#Function filament_user\(\) never returns#'
+    - '#Function user\(\) never returns#'

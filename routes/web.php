@@ -3,10 +3,26 @@
 use App\Http\Controllers\Web\MiscWebController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Base
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', [MiscWebController::class, 'index'])
     ->name('index');
 
-Route::get('/empty', [MiscWebController::class, 'empty'])
+Route::view('/empty', 'empty')
     ->name('empty');
 
-Route::redirect('/login', '/')->name('login');
+Route::view('/test-b4-tw', 'client.test-b4-tw.blade.php')
+    ->name('test-b4-tw');
+
+Route::redirect('/login', '/')
+    ->name('login');
+
+/*
+|--------------------------------------------------------------------------
+| Web Extra
+|--------------------------------------------------------------------------
+*/

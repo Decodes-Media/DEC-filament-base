@@ -2,19 +2,30 @@
 
 use App\Models\Admin;
 use App\Models\User;
-use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-/***********
- * LARAVEL *
- **********/
+/*
+ |--------------------------------------------------------------------------
+ | LARAVEL
+ |--------------------------------------------------------------------------
+ */
 
-function web_user(): User
+function user(string $guard = 'web'): Admin|User|null
 {
-    return Auth::guard('web')->user();
+    return Auth::guard($guard)->user();
+}
+
+function user_id(string $guard = 'web'): int|string|null
+{
+    return Auth::guard($guard)->id();
+}
+
+function user_can(string $guard = 'web', array|string $abilities = null): bool
+{
+    return user($guard)->can($abilities);
 }
 
 function storage_url(string $path): string
@@ -32,50 +43,11 @@ function is_request_for_api(Request $request = null): bool
         || $request->getHost() == config('base.route.api_domain');
 }
 
-/************
- * FILAMENT *
- ***********/
-
-function filament_user(): Admin|User|null
-{
-    return Filament::auth()->user();
-}
-
-function filament_user_id(): int|string|null
-{
-    return Filament::auth()->id();
-}
-
-function filament_user_can(array|string $abilities): bool
-{
-    return filament_user()->can($abilities);
-}
-
-function storage_avatarable_url(?string $path, ?string $fallbackstr): string
-{
-    if (empty($path)) {
-        //
-        $names = explode(' ', $fallbackstr);
-
-        $name = count($names) > 1
-              ? substr($names[0], 0, 1).substr($names[1], 0, 1)
-              : substr($fallbackstr, 0, 2);
-
-        return public_avatarable_url($name);
-
-    }
-
-    return storage_url($path);
-}
-
-/*********
- * UTILS *
- *********/
-
-function public_avatarable_url(string $name): string
-{
-    return "https://ui-avatars.com/api/?size=128&color=fff&background=111827&name={$name}";
-}
+/*
+ |--------------------------------------------------------------------------
+ | UTILS
+ |--------------------------------------------------------------------------
+ */
 
 function array_mirror(Collection|array $array, bool $excludeEmpty = true): array
 {
@@ -234,4 +206,26 @@ function shareable_mail(string $url, string $title): string
     $body = "Hi, check this out: {$title} from {$app} at {$url}";
 
     return shareable_mailto('changeme@email.com', 'Change me the subject', $body);
+}
+
+function public_avatarable_url(string $name): string
+{
+    return "https://ui-avatars.com/api/?size=128&color=fff&background=111827&name={$name}";
+}
+
+function storage_avatarable_url(?string $path, ?string $fallbackstr): string
+{
+    if (empty($path)) {
+        //
+        $names = explode(' ', $fallbackstr);
+
+        $name = count($names) > 1
+              ? substr($names[0], 0, 1).substr($names[1], 0, 1)
+              : substr($fallbackstr, 0, 2);
+
+        return public_avatarable_url($name);
+
+    }
+
+    return storage_url($path);
 }
