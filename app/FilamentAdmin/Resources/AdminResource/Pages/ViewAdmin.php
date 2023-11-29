@@ -3,7 +3,7 @@
 namespace App\FilamentAdmin\Resources\AdminResource\Pages;
 
 use App\FilamentAdmin\Resources\AdminResource;
-use App\Models\Admin;
+use App\Models\Base\Admin;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Notifications\Notification;

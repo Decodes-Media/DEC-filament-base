@@ -5,8 +5,8 @@ use App\FilamentAdmin\Resources\RoleResource\Pages\CreateRole;
 use App\FilamentAdmin\Resources\RoleResource\Pages\EditRole;
 use App\FilamentAdmin\Resources\RoleResource\Pages\ListRoles;
 use App\FilamentAdmin\Resources\RoleResource\Pages\ViewRole;
-use App\Models\Admin;
-use App\Models\Role;
+use App\Models\Base\Admin;
+use App\Models\Base\Role;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Config;
@@ -91,7 +91,7 @@ test('visit detail page', function () {
 
 test('visit edit form', function () {
     //
-    $role = Role::inRandomOrder()->first();
+    $role = Role::create(['name' => 'test', 'guard_name' => 'admin']);
 
     get(RoleResource::getUrl('edit', ['record' => $role]))
         ->assertOk()
@@ -133,11 +133,9 @@ test('cant edit superadmin role', function () {
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(EditRole::class, ['record' => $role->id])
-        ->fillForm([
-            'name' => 'new name',
-        ])
-        ->call('save')
-        ->assertNotified($notif);
+        ->assertRedirect();
+
+    Notification::assertNotified($notif);
 
     $role->refresh();
 

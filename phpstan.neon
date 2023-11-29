@@ -17,4 +17,4 @@ parameters:
   treatPhpDocTypesAsCertain: false
   ignoreErrors:
     - '#Access to an undefined property (.*)Model(.*)#'
-    - '#Function user\(\) never returns#'
+    - '#Function user\(\) (should|never) return#'

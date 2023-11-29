@@ -3,8 +3,8 @@
 namespace App\FilamentAdmin\Resources\RoleResource\Pages;
 
 use App\FilamentAdmin\Resources\RoleResource;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Models\Base\Permission;
+use App\Models\Base\Role;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
@@ -19,15 +19,17 @@ class EditRole extends EditRecord
         return [Actions\ViewAction::make()];
     }
 
-    protected function beforeValidate(): void
+    public function mount(int|string $record): void
     {
+        parent::mount($record);
+
         /** @var ?Role $record */
         $record = $this->record;
 
         if ($record?->name == 'Superadmin') {
             $msg = __('Failed, cannot edit Superadmin role');
             Notification::make()->danger()->title($msg)->send();
-            $this->halt();
+            $this->redirect($this->previousUrl);
         }
     }
 

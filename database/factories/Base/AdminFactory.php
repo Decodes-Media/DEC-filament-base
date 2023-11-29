@@ -1,14 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Base;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<\App\Models\User>
+ * @extends Factory<\App\Models\Base\Admin>
  */
-class UserFactory extends Factory
+class AdminFactory extends Factory
 {
     public function definition(): array
     {
@@ -16,9 +17,9 @@ class UserFactory extends Factory
             'id' => strtolower(Str::ulid()),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'phone' => fake()->e164PhoneNumber(),
-            'password' => '$2y$12$Cef0WjmEsvISnX5IjbwUlO3YO4kOD7chiR1CCvsB2useoGV7H7xjm', // password
+            // 'password' => '$2y$12$LCzumewG/xxSmvWEomLR8OdvXHghG5ffNX2Vc0zqBarQGV2JnndMC', // password
+            'password' => Hash::make('password'),
             'password_updated_at' => null,
             'remember_token' => Str::random(10),
             'is_active' => true,

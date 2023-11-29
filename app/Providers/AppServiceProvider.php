@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Macros\CollectionPaginate;
-use App\Models\PersonalAccessToken;
+use App\Models\Base\PersonalAccessToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;

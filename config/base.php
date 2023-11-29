@@ -97,10 +97,11 @@ return [
     */
 
     'model_morphs' => [
-        \App\Models\User::class => 'User',
-        \App\Models\Admin::class => 'Admin',
-        \App\Models\Role::class => 'Role',
-        \App\Models\Permission::class => 'Permission',
+        \App\Models\Base\ActivityLog::class => 'Activity Log',
+        \App\Models\Base\Admin::class => 'Admin',
+        \App\Models\Base\Permission::class => 'Permission',
+        \App\Models\Base\Role::class => 'Role',
+        \App\Models\Base\User::class => 'User',
     ],
 
     'model_policies' => [

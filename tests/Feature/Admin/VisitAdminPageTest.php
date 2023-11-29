@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Admin;
+use App\Models\Base\Admin;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;

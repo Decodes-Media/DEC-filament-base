@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Admin;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Models\Base\Admin;
+use App\Models\Base\Permission;
+use App\Models\Base\Role;
 use Illuminate\Database\Seeder;
 
 class BaseDatabaseSeeder extends Seeder
@@ -73,5 +73,11 @@ class BaseDatabaseSeeder extends Seeder
         ]);
 
         $super->assignRole('Superadmin');
+
+        $admin = Admin::factory()->create([
+            'name' => 'Admin',
+        ]);
+
+        $admin->assignRole('Admin');
     }
 }

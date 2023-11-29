@@ -18,7 +18,7 @@ class TrackUserLastActive
             return $next($request);
         }
 
-        if ($user = $request->user('web')) {
+        if ($user = user('web')) {
             $user->last_active_at = now();
             $user->save();
         }

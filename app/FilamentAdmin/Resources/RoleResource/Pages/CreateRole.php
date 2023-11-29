@@ -3,12 +3,11 @@
 namespace App\FilamentAdmin\Resources\RoleResource\Pages;
 
 use App\FilamentAdmin\Resources\RoleResource;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Models\Base\Permission;
+use App\Models\Base\Role;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\URL;
 
 class CreateRole extends CreateRecord
 {
@@ -16,13 +15,13 @@ class CreateRole extends CreateRecord
 
     public function mount(): void
     {
+        parent::mount();
+
         if (Role::count() >= config('base.records_limit.roles')) {
             $msg = __('Cannot create new record, limit excedeed');
             Notification::make()->danger()->title($msg)->send();
-            $this->redirect(URL::previous());
+            $this->redirect($this->previousUrl);
         }
-
-        parent::mount();
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array

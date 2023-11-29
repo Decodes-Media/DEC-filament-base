@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Admin;
-use App\Models\User;
+use App\Models\Base\Admin;
+use App\Models\Base\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;

@@ -7,7 +7,7 @@ use App\Filament\MyColumns;
 use App\Filament\MyFilters;
 use App\Filament\MyForms;
 use App\FilamentAdmin\Resources\AdminResource\Pages;
-use App\Models\Admin;
+use App\Models\Base\Admin;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
