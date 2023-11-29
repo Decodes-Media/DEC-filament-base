@@ -66,7 +66,10 @@ class AdminPanelProvider extends PanelProvider
                 \Filament\Http\Middleware\Authenticate::class,
             ])
             ->plugins([
-                \FilipFonal\FilamentLogManager\FilamentLogManager::make(),
+                \App\Support\FilamentLogManager\LogPlugin::make()
+                    ->usingPage(\App\Support\FilamentLogManager\LogsPage::class),
+                \ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin::make()
+                    ->usingPage(\App\Support\FilamentSpatieBackup\BackupPage::class),
             ]);
     }
 

@@ -1,7 +1,5 @@
 <?php
 
-use FilipFonal\FilamentLogManager\Pages\Logs;
-
 return [
     /**
      * Set true to display navigation item in the group.
@@ -32,5 +30,6 @@ return [
     /**
      * Allow set custom logs page class.
      */
-    'page_class' => Logs::class,
+    // 'page_class' => \FilipFonal\FilamentLogManager\Pages\Logs::class,
+    'page_class' => \App\Support\FilamentLogManager\LogsPage::class,
 ];
