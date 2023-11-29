@@ -33,11 +33,14 @@
   "Role — Export": "Role — Export",
   "System": "System",
   "Systems": "Systems",
-  "Log Activity": "Log Activity",
   "Log Activities": "Log Activities",
   "System — Log Activities": "System — Log Activity",
+  "Log Aplication": "Log Application",
   "System — Log Application": "System — Log Application",
+  "Site Setting": "Site Setting",
   "System — Site Setting": "System — Site Setting",
+  "Site Health": "Site Health",
   "System — Site Health": "System — Site Health",
+  "Site Backup": "Site Backup",
   "System — Site Backup": "System — Site Backup"
 }

@@ -9,6 +9,8 @@ export default {
       './resources/views/components/**/*.blade.php',
       './resources/views/filament/**/*.blade.php',
       './resources/views/vendor/filament**/**/*.blade.php',
+      // Packages goes here:
       './vendor/filament/**/*.blade.php',
+      './vendor/filipfonal/filament-log-manager/**/*.blade.php',
     ],
 }

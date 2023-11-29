@@ -11,11 +11,13 @@
     "php": "^8.1",
     "calebporzio/sushi": "^2.4",
     "filament/filament": "^3",
+    "filipfonal/filament-log-manager": "^2.0",
     "guzzlehttp/guzzle": "^7.2",
     "kodepandai/laravel-api-response": "dev-next",
     "laravel/framework": "^10.10",
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8",
+    "saade/filament-laravel-log": "^3.0",
     "spatie/laravel-activitylog": "^4.7",
     "spatie/laravel-permission": "^6.1"
   },

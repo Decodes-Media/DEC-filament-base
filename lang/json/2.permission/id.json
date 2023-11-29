@@ -33,11 +33,14 @@
   "Role — Export": "Jabatan — Ekspor",
   "System": "Sistem",
   "Systems": "Sistem",
-  "Log Activity": "Log Aktivitas",
   "Log Activities": "Log Aktivitas",
   "System — Log Activities": "Sistem — Log Aktivitas",
+  "Log Aplication": "Log Aplikasi",
   "System — Log Application": "Sistem — Log Aplikasi",
+  "Site Setting": "Pengaturan Situs",
   "System — Site Setting": "Sistem — Pengaturan Situs",
+  "Site Health": "Kesehatan Situs",
   "System — Site Health": "Sistem — Kesehatan Situs",
+  "Site Backup": "Cadangan Situs",
   "System — Site Backup": "Sistem — Cadangan Situs"
 }

@@ -66,7 +66,7 @@ class AdminPanelProvider extends PanelProvider
                 \Filament\Http\Middleware\Authenticate::class,
             ])
             ->plugins([
-                // pass
+                \FilipFonal\FilamentLogManager\FilamentLogManager::make(),
             ]);
     }
 
