@@ -11,7 +11,6 @@ return [
     'rate_limit' => 'Rate Limiter',
     'rate_limit_msg' => 'Too many request, please try again later.',
 
-    'welcome' => 'Welcome',
     'active' => 'Active',
     'inactive' => 'Inactive',
     'access' => 'Access',
@@ -24,6 +23,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'password_confirmation' => 'Password confirmation',
+    'welcome' => 'Welcome',
 
     'active_status' => 'Active status',
     'created_at' => 'Created at',

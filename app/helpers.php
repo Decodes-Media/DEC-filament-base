@@ -2,6 +2,7 @@
 
 use App\Models\Base\Admin;
 use App\Models\Base\User;
+use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,17 @@ function is_request_for_api(Request $request = null): bool
 
     return ($apiPath && $request->is('*'.$apiPath.'*'))
         || $request->getHost() == config('base.route.api_domain');
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | FILAMENT
+ |--------------------------------------------------------------------------
+ */
+
+function filament_user(): Admin|User|null
+{
+    return Filament::auth()->user();
 }
 
 /*

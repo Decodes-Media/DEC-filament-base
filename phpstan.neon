@@ -19,3 +19,4 @@ parameters:
     - '#Access to an undefined property (.*)Model(.*)#'
     - '#Function user\(\) (should|never) return#'
     - '#Parameter (.*) Filament\\Panel::pages\(\) expects array#'
+    - '#Function filament_user(.*) can be removed from the return type#'

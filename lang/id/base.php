@@ -11,7 +11,6 @@ return [
     'rate_limit' => 'Batas Limitasi',
     'rate_limit_msg' => 'Terlalu banyak permintaan, silahkan coba lagi nanti.',
 
-    'welcome' => 'Selamat Datang',
     'active' => 'Aktif',
     'inactive' => 'Tidak aktif',
     'access' => 'Akses',
@@ -24,6 +23,7 @@ return [
     'email' => 'Email',
     'password' => 'Kata sandi',
     'password_confirmation' => 'Konfirmasi kata sandi',
+    'welcome' => 'Selamat datang',
 
     'active_status' => 'Status aktif',
     'created_at' => 'Dibuat pada',

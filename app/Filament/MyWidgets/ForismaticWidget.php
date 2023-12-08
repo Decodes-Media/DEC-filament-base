@@ -18,6 +18,8 @@ class ForismaticWidget extends Widget
         'quoteText' => ' There is never enough time to do everything, but there is always enough time to do the most important thing.',
     ];
 
+    public string $username = 'Admin';
+
     public function mount(): void
     {
         try {
@@ -28,5 +30,7 @@ class ForismaticWidget extends Widget
         }
 
         $this->quote = isset($quote) ? $quote : $this->quote;
+
+        $this->username = filament_user()->name ?: 'Admin';
     }
 }
