@@ -28,7 +28,7 @@ class BaseDatabaseSeeder extends Seeder
                 Permission::create([
                     'name' => $name,
                     'guard_name' => $guard,
-                    'description' => __($description),
+                    'description' => $description,
                     'display_order' => $i + $j / 10,
                 ]);
                 $j++;
@@ -46,7 +46,7 @@ class BaseDatabaseSeeder extends Seeder
                 Role::create([
                     'name' => $name,
                     'guard_name' => $guard,
-                    'description' => __($description),
+                    'description' => $description,
                     'display_order' => $i + $j / 10,
                 ]);
                 $j++;

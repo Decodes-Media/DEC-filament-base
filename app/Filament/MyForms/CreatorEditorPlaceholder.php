@@ -18,7 +18,7 @@ class CreatorEditorPlaceholder
                     ->content(fn ($record) => $record->created_at),
                 Placeholder::make(__('base.created_by'))
                     ->content(fn ($record) => $record->creator?->name ?: '-'),
-                Placeholder::make(__('bae_updated_at'))
+                Placeholder::make(__('base.updated_at'))
                     ->content(fn ($record) => $record->updated_at),
                 Placeholder::make(__('base.updated_by'))
                     ->content(fn ($record) => $record->editor?->name ?: '-'),
