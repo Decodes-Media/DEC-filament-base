@@ -27,7 +27,7 @@ class EditRole extends EditRecord
         $record = $this->record;
 
         if ($record?->name == 'Superadmin') {
-            $msg = __('Failed, cannot edit Superadmin role');
+            $msg = __('admin.failed_cannot_edit_superadmin_role');
             Notification::make()->danger()->title($msg)->send();
             $this->redirect($this->previousUrl);
         }

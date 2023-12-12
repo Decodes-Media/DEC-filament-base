@@ -28,28 +28,28 @@ class AdminResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Access');
+        return __('admin.access');
     }
 
     public static function getModelLabel(): string
     {
-        return __('Admin');
+        return __('admin.admin');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Admins');
+        return __('admin.admins');
     }
 
     public static function form(Form $form): Form
     {
         return $form->schema([
             MyForms\CreatorEditorPlaceholder::make(),
-            Forms\Components\Section::make(__('About'))
+            Forms\Components\Section::make(__('admin.about'))
                 ->columns(2)
                 ->schema([
                     Forms\Components\TextInput::make('name')
-                        ->label(__('Name'))
+                        ->label(__('admin.name'))
                         ->disabled(fn ($record, $context) => //
                             $context != 'create' && (
                                 $record?->id == user_id('admin')
@@ -58,13 +58,13 @@ class AdminResource extends Resource
                         )
                         ->required(),
                     Forms\Components\TextInput::make('email')
-                        ->label(__('Email'))
+                        ->label(__('admin.email'))
                         ->email()
                         ->required()
                         ->unique(ignoreRecord: true)
                         ->disabledOn('edit'),
                     Forms\Components\TextInput::make('password')
-                        ->label(__('Password'))
+                        ->label(__('admin.password'))
                         ->password()
                         ->required()
                         ->confirmed()
@@ -72,22 +72,22 @@ class AdminResource extends Resource
                         ->visibleOn('create')
                         ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
                     Forms\Components\TextInput::make('password_confirmation')
-                        ->label(__('Password confirmation'))
+                        ->label(__('admin.password_confirmation'))
                         ->password()
                         ->required()
                         ->rule(Password::default())
                         ->visibleOn('create'),
                     MyForms\DatetimeForHumans::make('password_updated_at')
-                        ->label(__('Last update password at'))
+                        ->label(__('admin.last_update_password_at'))
                         ->visibleOn('view'),
                     MyForms\DatetimeForHumans::make('last_login_at')
-                        ->label(__('Last login at'))
+                        ->label(__('admin.last_login_at'))
                         ->visibleOn('view'),
-                    MyForms\ToggleIsActive::make(__('Active - can login to admin panel'))
+                    MyForms\ToggleIsActive::make(__('admin.active_can_login_to_admin_panel'))
                         ->columnSpanFull()
                         ->disabled(fn ($record) => $record?->id == user_id('admin')),
                 ]),
-            Forms\Components\Section::make(__('Roles'))
+            Forms\Components\Section::make(__('admin.roles'))
                 ->schema([
                     Forms\Components\CheckboxList::make('roles')
                         ->hiddenLabel()
@@ -103,23 +103,23 @@ class AdminResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->defaultSort('updated_at', 'DESC')
+            ->defaultSort('updated_at', 'desc')
             ->columns([
                 MyColumns\ActiveIcon::make(),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('Name'))
+                    ->label(__('admin.name'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->label(__('Email'))
+                    ->label(__('admin.email'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('roles.name')
-                    ->label(__('Role'))
+                    ->label(__('admin.role'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_login_at')
-                    ->label(__('Last login at'))
+                    ->label(__('admin.last_login_at'))
                     ->sortable(),
                 MyColumns\CreatedAt::make(),
                 MyColumns\UpdatedAt::make(),
@@ -127,7 +127,7 @@ class AdminResource extends Resource
             ->filters([
                 MyFilters\TernaryActiveStatusFilter::make(),
                 Tables\Filters\SelectFilter::make('roles')
-                    ->label(__('Roles'))
+                    ->label(__('admin.roles'))
                     ->relationship('roles', 'name'),
             ])
             ->actions([

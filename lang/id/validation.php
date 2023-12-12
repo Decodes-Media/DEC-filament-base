@@ -22,6 +22,7 @@ return [
     'alpha_dash' => ':Attribute hanya boleh berisi huruf, angka, strip, dan garis bawah.',
     'alpha_num' => ':Attribute hanya boleh berisi huruf dan angka.',
     'array' => ':Attribute harus berisi sebuah array.',
+    'ascii' => ':Attribute hanya boleh berisi karakter dan simbol alfanumerik satu-byte.',
     'before' => ':Attribute harus berisi tanggal sebelum :date.',
     'before_or_equal' => ':Attribute harus berisi tanggal sebelum atau sama dengan :date.',
     'between' => [
@@ -36,6 +37,7 @@ return [
     'date' => ':Attribute bukan tanggal yang valid.',
     'date_equals' => ':Attribute harus berisi tanggal yang sama dengan :date.',
     'date_format' => ':Attribute tidak cocok dengan format :format.',
+    'decimal' => ':Attribute harus memiliki :decimal poin desimal.',
     'declined' => ':Attribute ini harus ditolak.',
     'declined_if' => ':Attribute ini harus ditolak ketika :other bernilai :value.',
     'different' => ':Attribute dan :other harus berbeda.',
@@ -43,6 +45,8 @@ return [
     'digits_between' => ':Attribute harus terdiri dari :min sampai :max angka.',
     'dimensions' => ':Attribute tidak memiliki dimensi gambar yang valid.',
     'distinct' => ':Attribute memiliki nilai yang duplikat.',
+    'doesnt_end_with' => ':Attribute tidak boleh diakhiri dengan salah satu dari berikut: :values.',
+    'doesnt_start_with' => ':Attribute tidak boleh diawali dengan salah satu dari berikut: :values.',
     'email' => ':Attribute harus berupa alamat surel yang valid.',
     'ends_with' => ':Attribute harus diakhiri salah satu dari berikut: :values',
     'enum' => ':Attribute yang dipilih tidak valid.',
@@ -69,6 +73,7 @@ return [
     'ipv4' => ':Attribute harus berupa alamat IPv4 yang valid.',
     'ipv6' => ':Attribute harus berupa alamat IPv6 yang valid.',
     'json' => ':Attribute harus berupa JSON string yang valid.',
+    'lowercase' => ':Attribute harus menggunakan huruf kecil.',
     'lt' => [
         'array' => ':Attribute harus memiliki kurang dari :value anggota.',
         'file' => ':Attribute harus berukuran kurang dari :value kilobita.',
@@ -88,6 +93,7 @@ return [
         'numeric' => ':Attribute maksimal bernilai :max.',
         'string' => ':Attribute maksimal berisi :max karakter.',
     ],
+    'max_digits' => ':Attribute tidak boleh memiliki lebih dari :max digit.',
     'mimes' => ':Attribute harus berupa berkas berjenis: :values.',
     'mimetypes' => ':Attribute harus berupa berkas berjenis: :values.',
     'min' => [
@@ -96,11 +102,18 @@ return [
         'numeric' => ':Attribute minimal bernilai :min.',
         'string' => ':Attribute minimal berisi :min karakter.',
     ],
+    'min_digits' => ':Attribute harus memiliki setidaknya :min digit.',
     'multiple_of' => ':Attribute harus merupakan kelipatan dari :value',
     'not_in' => ':Attribute yang dipilih tidak valid.',
     'not_regex' => 'Format :attribute tidak valid.',
     'numeric' => ':Attribute harus berupa angka.',
-    'password' => 'Kata sandi salah.',
+    'password' => [
+        'letters' => ':Attribute :harus berisi setidaknya satu huruf.',
+        'mixed' => ':Attribute harus berisi setidaknya satu huruf besar dan satu huruf kecil.',
+        'numbers' => ':Attribute harus berisi setidaknya satu angka.',
+        'symbols' => ':Attribute harus berisi setidaknya satu simbol.',
+        'uncompromised' => ':Attribute yang diberikan telah muncul dalam kebocoran data. Pilihlah :attribute yang berbeda.',
+    ],
     'present' => ':Attribute wajib ada.',
     'prohibited' => ':Attribute tidak boleh ada.',
     'prohibited_if' => ':Attribute tidak boleh ada bila :other adalah :value.',
@@ -108,6 +121,7 @@ return [
     'prohibits' => ':Attribute melarang isian :other untuk ditampilkan.',
     'regex' => 'Format :attribute tidak valid.',
     'required' => ':Attribute wajib diisi.',
+    'required_if_accepted' => ':Attribute wajib diisi ketika :other di terima.',
     'required_array_keys' => ':Attribute wajib berisi entri untuk: :values.',
     'required_if' => ':Attribute wajib diisi bila :other adalah :value.',
     'required_unless' => ':Attribute wajib diisi kecuali :other memiliki nilai :values.',
@@ -127,12 +141,39 @@ return [
     'timezone' => ':Attribute harus berisi zona waktu yang valid.',
     'unique' => ':Attribute sudah digunakan.',
     'uploaded' => ':Attribute gagal diunggah.',
+    'uppercase' => ':Attribute harus menggunakan huruf besar.',
     'url' => 'Format :attribute tidak valid.',
+    'ulid' => ':Attribute harus merupakan ULID yang valid.',
     'uuid' => ':Attribute harus merupakan UUID yang valid.',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify custom validation messages for attributes using the
+    | convention "attribute.rule" to name the lines. This makes it quick to
+    | specify a specific custom language line for a given attribute rule.
+    |
+    */
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
+    |
+    */
+
+    'attributes' => [],
 
 ];

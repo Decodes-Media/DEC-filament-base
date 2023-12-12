@@ -8,7 +8,7 @@ test('hi index', function () {
     //
     getJson(route('api.index'))
         ->assertOk()
-        ->assertJsonPath('message', __('base.welcome'))
+        ->assertJsonPath('message', __('admin.welcome'))
         ->assertJsonPath('data', []);
 });
 

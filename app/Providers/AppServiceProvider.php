@@ -33,10 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
         Model::preventLazyLoading(App::isLocal()); // safe on production
 
-        $this->loadJsonTranslationsFrom(lang_path('json/1.base'));
-        $this->loadJsonTranslationsFrom(lang_path('json/2.permission'));
-        $this->loadJsonTranslationsFrom(lang_path('json/3.extra'));
-
         // Paginator::useTailwind(); // or useBootstrapFive();
 
         // View::share('siteSetting', app(SiteSetting::class));

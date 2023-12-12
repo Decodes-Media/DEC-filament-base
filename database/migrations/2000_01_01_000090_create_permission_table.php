@@ -31,7 +31,7 @@ return new class extends Migration
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->ulid('id')->primary(); // permission id
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
-            $table->string('description')->nullable();
+            // $table->string('description')->nullable();
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->float('display_order')->default(0);
             $table->timestamps();
@@ -46,7 +46,7 @@ return new class extends Migration
                 $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
             }
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
-            $table->string('description')->nullable();
+            // $table->string('description')->nullable();
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->float('display_order')->default(0);
             $table->timestamps();

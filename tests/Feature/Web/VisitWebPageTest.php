@@ -8,5 +8,5 @@ test('hi index', function () {
     //
     get(route('index'))
         ->assertOk()
-        ->assertSee(__('base.welcome'));
+        ->assertSee(__('admin.welcome'));
 });

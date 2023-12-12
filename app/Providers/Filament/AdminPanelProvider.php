@@ -3,13 +3,13 @@
 namespace App\Providers\Filament;
 
 use Filament\Facades\Filament;
-use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Assets\Js;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Vite;
 
 class AdminPanelProvider extends PanelProvider
@@ -60,14 +60,15 @@ class AdminPanelProvider extends PanelProvider
                 \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
                 // \Filament\Http\Middleware\DisableBladeIconComponents::class,
+                \Kenepa\TranslationManager\Http\Middleware\SetLanguage::class,
                 \Filament\Http\Middleware\DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
                 \Filament\Http\Middleware\Authenticate::class,
             ])
             ->plugins([
-                \App\Support\FilamentLogManager\LogPlugin::make()
-                    ->usingPage(\App\Support\FilamentLogManager\LogsPage::class),
+                \App\Support\FilamentLogManager\LogPlugin::make(),
+                \App\Support\TranslationManager\TranslationPlugin::make(),
                 \ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin::make()
                     ->usingPage(\App\Support\FilamentSpatieBackup\BackupPage::class),
             ]);
@@ -82,18 +83,22 @@ class AdminPanelProvider extends PanelProvider
             if ($panel->getId() == 'admin') {
                 //
                 $panel->navigationGroups([
-                    NavigationGroup::make()->label(__('base.access')),
-                    NavigationGroup::make()->label(__('base.system')),
+                    __('permission.access'),
+                    __('permission.system'),
                 ]);
 
                 FilamentAsset::register([
                     Js::make('theme-js', url(Vite::asset('resources/js/filament-base-theme.js'))),
                 ]);
 
-                FilamentView::registerRenderHook('panels::head.end', fn () => '
-                    <meta name="developer" content="Decodes Media" />
-                ');
+                // FilamentView::registerRenderHook('panels::head.end', fn () => '
+                //     <meta name="developer" content="Decodes Media" />
+                // ');
             }
+        });
+
+        Gate::define('use-translation-manager', function ($user) {
+            return $user !== null;
         });
     }
 }

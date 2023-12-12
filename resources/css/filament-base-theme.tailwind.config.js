@@ -12,5 +12,6 @@ export default {
       // Packages goes here:
       './vendor/filament/**/*.blade.php',
       './vendor/filipfonal/filament-log-manager/**/*.blade.php',
+      './vendor/kenepa/translation-manager/resources/**/*.blade.php',
     ],
 }

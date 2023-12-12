@@ -9,7 +9,7 @@ class ActiveIcon
     public static function make(): IconColumn
     {
         return IconColumn::make('is_active')
-            ->label(__('base.active'))
+            ->label(__('admin.active'))
             ->boolean()
             ->trueColor('primary')
             ->sortable()

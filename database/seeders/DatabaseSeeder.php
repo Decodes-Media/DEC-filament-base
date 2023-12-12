@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $startTime = microtime(true);
 
         $this->call(BaseDatabaseSeeder::class);
+        $this->call(LangDatabaseSeeder::class);
         $this->call(MasterDatabaseSeeder::class);
 
         $endTime = round(microtime(true) - $startTime, 2);

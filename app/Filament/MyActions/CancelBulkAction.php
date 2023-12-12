@@ -9,7 +9,7 @@ class CancelBulkAction
     public static function make(): BulkAction
     {
         return BulkAction::make('cancel-bulk-action')
-            ->label(__('base.cancel_all_selection'))
+            ->label(__('admin.cancel_all_selection'))
             ->icon('heroicon-o-x-circle')
             ->action(fn () => null)
             ->deselectRecordsAfterCompletion();

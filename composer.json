@@ -13,6 +13,7 @@
     "filament/filament": "^3",
     "filipfonal/filament-log-manager": "^2.0",
     "guzzlehttp/guzzle": "^7.2",
+    "kenepa/translation-manager": "^4.0",
     "kodepandai/laravel-api-response": "dev-next",
     "laravel/framework": "^10.10",
     "laravel/sanctum": "^3.3",

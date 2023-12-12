@@ -28,7 +28,7 @@ test('visit list page', function () {
     //
     get(RoleResource::getUrl('index'))
         ->assertOk()
-        ->assertSee(__('Roles'));
+        ->assertSee(__('admin.roles'));
 
     livewire(ListRoles::class)
         ->assertCanSeeTableRecords(Role::take(5)->get());
@@ -38,7 +38,7 @@ test('visit create form', function () {
     //
     get(RoleResource::getUrl('create'))
         ->assertOk()
-        ->assertSee(__('Role'));
+        ->assertSee(__('admin.role'));
 });
 
 test('validate create form', function () {
@@ -70,7 +70,7 @@ test('cant create exceed limit', function () {
     //
     Config::set('base.records_limit.roles', 1);
 
-    $msg = __('Cannot create new record, limit excedeed');
+    $msg = __('admin.failed_to_create_new_record_limit_excedeed');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(CreateRole::class)
@@ -85,7 +85,7 @@ test('visit detail page', function () {
 
     get(RoleResource::getUrl('view', ['record' => $role]))
         ->assertOk()
-        ->assertSee(__('Role'))
+        ->assertSee(__('admin.role'))
         ->assertSee($role->name);
 });
 
@@ -95,7 +95,7 @@ test('visit edit form', function () {
 
     get(RoleResource::getUrl('edit', ['record' => $role]))
         ->assertOk()
-        ->assertSee(__('Roles'));
+        ->assertSee(__('admin.roles'));
 
     livewire(EditRole::class, ['record' => $role->id])
         ->assertFormSet([
@@ -109,7 +109,7 @@ test('submit edit form', function () {
 
     get(RoleResource::getUrl('edit', ['record' => $role]))
         ->assertOk()
-        ->assertSee(__('Roles'));
+        ->assertSee(__('admin.roles'));
 
     livewire(EditRole::class, ['record' => $role->id])
         ->fillForm([
@@ -129,7 +129,7 @@ test('cant edit superadmin role', function () {
     //
     $role = Role::firstWhere('name', 'Superadmin');
 
-    $msg = __('Failed, cannot edit Superadmin role');
+    $msg = __('admin.failed_cannot_edit_superadmin_role');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(EditRole::class, ['record' => $role->id])
@@ -158,7 +158,7 @@ test('cant delete superadmin role', function () {
     //
     $role = Role::firstWhere('name', 'Superadmin');
 
-    $msg = __('Failed, cannot delete Superadmin role');
+    $msg = __('admin.failed_cannot_delete_superadmin_role');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(ViewRole::class, ['record' => $role->id])
@@ -174,7 +174,7 @@ test('cant delete attached role', function () {
 
     Admin::inRandomOrder()->first()->assignRole($role);
 
-    $msg = __('Failed, cannot delete role that has been attached to admins');
+    $msg = __('admin.failed_cannot_delete_role_that_has_been_attached_to_admins');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(ViewRole::class, ['record' => $role->id])

@@ -13,13 +13,13 @@ class CreatorEditorInfo
             ->columns(4)
             ->extraAttributes(['class' => 'bg-gray-100'])
             ->schema([
-                TextEntry::make(__('base.created_at'))
+                TextEntry::make(__('admin.created_at'))
                     ->getStateUsing(fn ($record) => $record->created_at),
-                TextEntry::make(__('base.created_by'))
+                TextEntry::make(__('admin.created_by'))
                     ->getStateUsing(fn ($record) => $record->creator?->name ?: '-'),
-                TextEntry::make(__('base.updated_at'))
+                TextEntry::make(__('admin.updated_at'))
                     ->getStateUsing(fn ($record) => $record->updated_at),
-                TextEntry::make(__('base.updated_by'))
+                TextEntry::make(__('admin.updated_by'))
                     ->getStateUsing(fn ($record) => $record->editor?->name ?: '-'),
             ]);
     }

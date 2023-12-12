@@ -28,7 +28,7 @@ test('visit list page', function () {
     //
     get(AdminResource::getUrl('index'))
         ->assertOk()
-        ->assertSee(__('Admins'));
+        ->assertSee(__('admin.admins'));
 
     livewire(ListAdmins::class)
         ->assertCanSeeTableRecords(Admin::take(5)->get());
@@ -38,7 +38,7 @@ test('visit create form', function () {
     //
     get(AdminResource::getUrl('create'))
         ->assertOk()
-        ->assertSee(__('Admin'));
+        ->assertSee(__('admin.admin'));
 });
 
 test('validate create form', function () {
@@ -88,7 +88,7 @@ test('cant create exceed limit', function () {
     //
     Config::set('base.records_limit.admins', 1);
 
-    $msg = __('Cannot create new record, limit excedeed');
+    $msg = __('admin.failed_to_create_new_record_limit_excedeed');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(CreateAdmin::class)
@@ -103,7 +103,7 @@ test('visit detail page', function () {
 
     get(AdminResource::getUrl('view', ['record' => $admin]))
         ->assertOk()
-        ->assertSee(__('Admin'))
+        ->assertSee(__('admin.admin'))
         ->assertSee($admin->name);
 });
 
@@ -113,7 +113,7 @@ test('visit edit form', function () {
 
     get(AdminResource::getUrl('edit', ['record' => $admin]))
         ->assertOk()
-        ->assertSee(__('Admin'));
+        ->assertSee(__('admin.admin'));
 
     livewire(EditAdmin::class, ['record' => $admin->id])
         ->assertFormSet([
@@ -130,7 +130,7 @@ test('submit edit form', function () {
 
     get(AdminResource::getUrl('edit', ['record' => $admin]))
         ->assertOk()
-        ->assertSee(__('Admin'))
+        ->assertSee(__('admin.admin'))
         ->assertSee($admin->name);
 
     livewire(EditAdmin::class, ['record' => $admin->id])
@@ -166,7 +166,7 @@ test('cant delete your self', function () {
     $admin = Admin::factory()->create();
     actingAs($admin);
 
-    $msg = __('Failed, cannot delete your self');
+    $msg = __('admin.failed_cannot_delete_your_self');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(ViewAdmin::class, ['record' => $admin->id])
@@ -183,7 +183,7 @@ test('cant delete superadmin user', function () {
 
     actingAs($admin);
 
-    $msg = __('Failed, cannot delete Superadmin user');
+    $msg = __('admin.failed_cannot_delete_superadmin_user');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(ViewAdmin::class, ['record' => $super->id])
@@ -197,7 +197,7 @@ test('cant delete active user', function () {
     //
     $admin = Admin::factory()->create();
 
-    $msg = __('Failed, cannot delete active admin');
+    $msg = __('admin.failed_cannot_delete_active_admin');
     $notif = Notification::make()->danger()->title($msg);
 
     livewire(ViewAdmin::class, ['record' => $admin->id])

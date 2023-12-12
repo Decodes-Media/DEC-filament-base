@@ -24,13 +24,13 @@ class ViewRole extends ViewRecord
                     $record = $this->record;
 
                     if ($record->name == 'Superadmin') {
-                        $msg = __('Failed, cannot delete Superadmin role');
+                        $msg = __('admin.failed_cannot_delete_superadmin_role');
                         Notification::make()->danger()->title($msg)->send();
                         $action->cancel();
                     }
 
                     if ($record->users()->exists()) {
-                        $msg = __('Failed, cannot delete role that has been attached to admins');
+                        $msg = __('admin.failed_cannot_delete_role_that_has_been_attached_to_admins');
                         Notification::make()->danger()->title($msg)->send();
                         $action->cancel();
                     }

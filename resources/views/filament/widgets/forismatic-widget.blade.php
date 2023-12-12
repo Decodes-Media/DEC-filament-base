@@ -1,7 +1,7 @@
 <x-filament::widget>
   <x-filament::card>
     <p class="mb-2 text-xl text-neutral-600 dark:text-neutral-300">
-      @lang('base.welcome') {{ $username }}.
+      @lang('admin.welcome') {{ $username }}.
     </p>
     <p class="mb-4 text-lg text-neutral-600 dark:text-neutral-300">
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-8 w-8 pr-2" viewBox="0 0 24 24">

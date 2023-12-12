@@ -18,7 +18,7 @@ class CreateRole extends CreateRecord
         parent::mount();
 
         if (Role::count() >= config('base.records_limit.roles')) {
-            $msg = __('Cannot create new record, limit excedeed');
+            $msg = __('admin.failed_to_create_new_record_limit_excedeed');
             Notification::make()->danger()->title($msg)->send();
             $this->redirect($this->previousUrl);
         }

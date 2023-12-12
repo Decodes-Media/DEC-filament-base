@@ -14,12 +14,6 @@ class Role extends Model implements ModelWithLogActivity
     use LogsActivity;
     use ModelActivityLogOptions;
 
-    protected $fillable = [
-        'name',
-        'guard_name',
-        'description',
-    ];
-
     public function logIdentifier(): string
     {
         return $this->name;

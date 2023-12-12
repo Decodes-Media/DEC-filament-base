@@ -39,8 +39,8 @@ class Handler extends ExceptionHandler
                 if ($e instanceof ThrottleRequestsException) {
                     return ApiException::error()
                         ->statusCode($e->getStatusCode())
-                        ->title(__('base.rate_limit'))
-                        ->message(__('base.rate_limit_msg'));
+                        ->title(__('api.rate_limiter'))
+                        ->message(__('api.too_many_request_please_try_again_later'));
                 }
 
                 return ApiExceptionHandler::render($e, $request);

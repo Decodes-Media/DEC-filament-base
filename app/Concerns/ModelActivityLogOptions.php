@@ -15,7 +15,9 @@ trait ModelActivityLogOptions
         $morphName = @config('base.model_morphs')[get_class($this)]
                    ?: $this->getMorphClass();
 
-        $record = trans($morphName);
+        $translated = trans("permission.{$morphName}");
+
+        $record = is_string($translated) ? $translated : $morphName;
 
         if (! method_exists($this, 'logAttributes')) {
             throw new \Exception('Missing logAttributes method', 1);
@@ -28,10 +30,10 @@ trait ModelActivityLogOptions
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(function ($eventName) use ($record) {
                 return match ($eventName) {
-                    'created' => __('Successfully create new :record', ['record' => $record]),
-                    'updated' => __('Successfully update a :record', ['record' => $record]),
-                    'deleted' => __('Successfully delete a :record', ['record' => $record]),
-                    'restored' => __('Successfully restore deleted :record', ['record' => $record]),
+                    'created' => __('admin.successfully_create_new_record', ['record' => $record]),
+                    'updated' => __('admin.successfully_update_a_record', ['record' => $record]),
+                    'deleted' => __('admin.successfully_delete_a_record', ['record' => $record]),
+                    'restored' => __('admin.successfully_restore_deleted_record', ['record' => $record]),
                     default => null,
                 };
             });

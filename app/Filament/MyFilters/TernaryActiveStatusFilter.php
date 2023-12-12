@@ -9,9 +9,9 @@ class TernaryActiveStatusFilter
     public static function make(): TernaryFilter
     {
         return TernaryFilter::make('active_status')
-            ->label(__('Active status'))
+            ->label(__('admin.active_status'))
             ->attribute('is_active')
-            ->trueLabel(__('Active'))
-            ->falseLabel(__('Inactive'));
+            ->trueLabel(__('admin.active'))
+            ->falseLabel(__('admin.inactive'));
     }
 }

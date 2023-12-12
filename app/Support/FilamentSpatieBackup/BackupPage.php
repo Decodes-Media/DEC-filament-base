@@ -8,5 +8,5 @@ class BackupPage extends Page
 {
     protected static ?string $slug = 'system/site-backup';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 }

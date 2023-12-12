@@ -11,7 +11,7 @@ class MiscApiController extends Controller
     {
         return ApiResponse::success()
             ->title('API')
-            ->message(__('base.welcome'));
+            ->message(__('admin.welcome'));
     }
 
     public function ping(): ApiResponse

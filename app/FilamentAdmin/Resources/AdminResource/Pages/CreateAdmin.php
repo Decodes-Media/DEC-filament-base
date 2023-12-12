@@ -17,7 +17,7 @@ class CreateAdmin extends CreateRecord
         parent::mount();
 
         if (Admin::count() >= config('base.records_limit.admins')) {
-            $msg = __('Cannot create new record, limit excedeed');
+            $msg = __('admin.failed_to_create_new_record_limit_excedeed');
             Notification::make()->danger()->title($msg)->send();
             $this->redirect($this->previousUrl);
         }

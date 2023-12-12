@@ -9,7 +9,7 @@ class UpdatedAt
     public static function make(): TextColumn
     {
         return TextColumn::make('updated_at')
-            ->label(__('base.updated_at_date'))
+            ->label(__('admin.updated_at_date'))
             ->formatStateUsing(fn ($state) => $state->translatedFormat('d M Y H:i'))
             ->sortable()
             ->toggleable(true, true);

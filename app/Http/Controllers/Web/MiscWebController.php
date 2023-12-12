@@ -9,6 +9,6 @@ class MiscWebController extends Controller
 {
     public function index(): Response
     {
-        return Response(__('base.welcome'));
+        return Response(__('admin.welcome'));
     }
 }

@@ -24,11 +24,10 @@ class BaseDatabaseSeeder extends Seeder
         $i = 0;
         foreach (config('base.permissions') as $guard => $permissions) {
             $j = 0;
-            foreach ($permissions as $name => $description) {
+            foreach ($permissions as $name) {
                 Permission::create([
                     'name' => $name,
-                    'guard_name' => $guard,
-                    'description' => $description,
+                    'guard_name' => explode(':', $guard)[1],
                     'display_order' => $i + $j / 10,
                 ]);
                 $j++;
@@ -42,11 +41,10 @@ class BaseDatabaseSeeder extends Seeder
         $i = 0;
         foreach (config('base.roles') as $guard => $roles) {
             $j = 0;
-            foreach ($roles as $name => $description) {
+            foreach ($roles as $name) {
                 Role::create([
                     'name' => $name,
-                    'guard_name' => $guard,
-                    'description' => $description,
+                    'guard_name' => explode(':', $guard)[1],
                     'display_order' => $i + $j / 10,
                 ]);
                 $j++;
@@ -59,7 +57,7 @@ class BaseDatabaseSeeder extends Seeder
     {
         foreach (config('base.role_permissions') as $guard => $data) {
             foreach ($data as $role => $permissions) {
-                Role::findByName($role, $guard)
+                Role::findByName($role, explode(':', $guard)[1])
                     ->givePermissionTo($permissions);
             }
         }
