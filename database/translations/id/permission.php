@@ -22,6 +22,8 @@ return [
     'roles' => 'Jabatan',
     'user' => 'User',
     'users' => 'Users',
+    'permission' => 'Hak akses',
+    'permissions' => 'Hak akses',
 
     // Two Words
 

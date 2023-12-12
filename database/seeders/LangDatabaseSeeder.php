@@ -29,8 +29,8 @@ class LangDatabaseSeeder extends Seeder
                 'group' => $group,
                 'key' => $key,
                 'text' => [
-                    'en' => $linesEn[$key],
-                    'id' => $linesId[$key],
+                    'en' => @$linesEn[$key],
+                    'id' => @$linesId[$key],
                 ],
             ]);
         }
