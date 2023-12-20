@@ -15,6 +15,7 @@ class Setting extends Model implements ModelWithLogActivity
     protected $fillable = [
         'key',
         'value',
+        'locked',
     ];
 
     public function logIdentifier(): string

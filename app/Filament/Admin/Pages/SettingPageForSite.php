@@ -2,6 +2,9 @@
 
 namespace App\Filament\Admin\Pages;
 
+use App\Models\Setting;
+use Filament\Forms;
+use Filament\Forms\Form;
 use Illuminate\Contracts\Support\Htmlable;
 
 /**
@@ -15,11 +18,56 @@ class SettingPageForSite extends SettingPage
 
     public function getTitle(): string|Htmlable
     {
-        return __('admin.setting_site');
+        return __('admin.site_setting');
     }
 
     public function afterMount(): void
     {
         $this->form->fill(setting('site'));
+    }
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->statePath('data')
+            ->schema([
+                Forms\Components\Section::make()
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('contact_email')
+                            ->label(__('admin.contact_email'))
+                            ->columnSpanFull()
+                            ->email()
+                            ->disabled($this->disableForm)
+                            ->required(),
+                        Forms\Components\FileUpload::make('logo_light_path')
+                            ->label(__('admin.logo_light'))
+                            ->imagePreviewHeight('256px')
+                            ->directory('uploads')
+                            ->getUploadedFileNameForStorageUsing(fn ($file) => uniqid().$file->hashName())
+                            ->downloadable()
+                            ->openable()
+                            ->disabled($this->disableForm)
+                            ->required(),
+                        Forms\Components\FileUpload::make('logo_dark_path')
+                            ->label(__('admin.logo_dark'))
+                            ->imagePreviewHeight('256px')
+                            ->directory('uploads')
+                            ->getUploadedFileNameForStorageUsing(fn ($file) => uniqid().$file->hashName())
+                            ->downloadable()
+                            ->openable()
+                            ->disabled($this->disableForm)
+                            ->required(),
+                    ]),
+            ]);
+    }
+
+    public function submit(): void
+    {
+        foreach ($this->form->getState() as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        $this->redirect(static::getUrl(['save' => 'ok']));
     }
 }

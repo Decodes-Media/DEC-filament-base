@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Pages;
 
+use App\Models\Setting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\Support\Htmlable;
@@ -17,7 +18,7 @@ class SettingPageForApp extends SettingPage
 
     public function getTitle(): string|Htmlable
     {
-        return __('admin.setting_app');
+        return __('admin.app_setting');
     }
 
     public function afterMount(): void
@@ -31,34 +32,39 @@ class SettingPageForApp extends SettingPage
             ->statePath('data')
             ->schema([
                 Forms\Components\Section::make()
+                    ->columns(2)
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label(__('admin.name'))
-                            ->disabled($this->disableForm)
-                            ->required(),
+                            ->required()
+                            ->disabled($this->disableForm),
                         Forms\Components\TextInput::make('short_name')
                             ->label(__('admin.short_name'))
-                            ->disabled($this->disableForm)
-                            ->required(),
+                            ->required()
+                            ->disabled($this->disableForm),
                         Forms\Components\Select::make('locale')
                             ->label(__('admin.locale'))
-                            ->disabled($this->disableForm)
                             ->options([
                                 'id' => 'Indonesia',
                                 'en' => 'English',
                             ])
-                            ->required(),
+                            ->required()
+                            ->disabled($this->disableForm),
                         Forms\Components\TextInput::make('backup_password')
-                            ->label(__('admin.backup_password'))
+                            ->label(__('admin.backup_file_password'))
                             ->password()
-                            ->disabled($this->disableForm)
-                            ->nullable(),
+                            ->nullable()
+                            ->disabled($this->disableForm),
                     ]),
             ]);
     }
 
     public function submit(): void
     {
-        dd($this->form->getState());
+        foreach ($this->form->getState() as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        $this->redirect(static::getUrl(['save' => 'ok']));
     }
 }

@@ -20,7 +20,7 @@ class SettingPage extends Page implements HasForms
 
     protected static ?string $subSlug = '';
 
-    protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
+    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     protected static ?int $navigationSort = 4;
 
@@ -63,11 +63,11 @@ class SettingPage extends Page implements HasForms
     public function getSubNavigation(): array
     {
         return [
-            NavigationItem::make(__('admin.setting_app'))
+            NavigationItem::make(__('admin.app'))
                 ->icon('heroicon-o-document-text')
                 ->url(SettingPageForApp::getUrl())
                 ->isActiveWhen(fn () => static::class == SettingPageForApp::class),
-            NavigationItem::make(__('admin.setting_site'))
+            NavigationItem::make(__('admin.site'))
                 ->icon('heroicon-o-document-text')
                 ->url(SettingPageForSite::getUrl())
                 ->isActiveWhen(fn () => static::class == SettingPageForSite::class),
