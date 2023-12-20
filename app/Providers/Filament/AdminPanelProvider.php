@@ -34,38 +34,25 @@ class AdminPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->colors(['primary' => Color::Indigo])
             ->discoverResources(
-                in: app_path('FilamentAdmin/Resources'),
-                for: 'App\\FilamentAdmin\\Resources',
+                in: app_path('Filament/Admin/Resources'),
+                for: 'App\\Filament\\Admin\\Resources',
             )
             ->discoverPages(
-                in: app_path('FilamentAdmin/Pages'),
-                for: 'App\\FilamentAdmin\\Pages',
+                in: app_path('Filament/Admin/Pages'),
+                for: 'App\\Filament\\Admin\\Pages',
             )
             ->pages([
-                // \App\FilamentAdmin\Pages\DashboardPage::class,
+                // \App\Filament\Admin\Pages\DashboardPage::class,
             ])
             ->discoverWidgets(
-                in: app_path('FilamentAdmin/Widgets'),
-                for: 'App\\FilamentAdmin\\Widgets',
+                in: app_path('Filament/Admin/Widgets'),
+                for: 'App\\Filament\\Admin\\Widgets',
             )
             ->widgets([
-                \App\Filament\MyWidgets\ForismaticWidget::class,
+                \App\Support\FilamentBase\Widgets\ForismaticWidget::class,
             ])
-            ->middleware([
-                \Illuminate\Cookie\Middleware\EncryptCookies::class,
-                \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-                \Illuminate\Session\Middleware\StartSession::class,
-                \Illuminate\Session\Middleware\AuthenticateSession::class,
-                \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-                \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
-                \Illuminate\Routing\Middleware\SubstituteBindings::class,
-                // \Filament\Http\Middleware\DisableBladeIconComponents::class,
-                \Kenepa\TranslationManager\Http\Middleware\SetLanguage::class,
-                \Filament\Http\Middleware\DispatchServingFilamentEvent::class,
-            ])
-            ->authMiddleware([
-                \Filament\Http\Middleware\Authenticate::class,
-            ])
+            ->middleware(config('filament.default_middlewares'))
+            ->authMiddleware(config('filament.default_auth_middlewares'))
             ->plugins([
                 \App\Support\FilamentLogManager\LogPlugin::make(),
                 \App\Support\TranslationManager\TranslationPlugin::make(),

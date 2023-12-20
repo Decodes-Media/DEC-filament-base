@@ -62,7 +62,7 @@ return [
 
             'navigation' => [
                 'group' => 'System',
-                'label' => 'Site Backup',
+                'label' => 'Backup',
             ],
         ],
     ],

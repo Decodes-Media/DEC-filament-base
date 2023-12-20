@@ -11,7 +11,7 @@ use Spatie\TranslationLoader\LanguageLine;
 
 class LanguageLinesResource extends Resource
 {
-    protected static ?string $slug = 'system/site-translations';
+    protected static ?string $slug = 'system/translations';
 
     protected static ?int $navigationSort = 3;
 

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'translation-navigation-label' => 'Site Translations',
+    'translation-navigation-label' => 'Translations',
     'translation-label' => 'Translation|Translations',
     'group' => 'Group',
     'key' => 'Key',

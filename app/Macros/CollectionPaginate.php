@@ -28,8 +28,8 @@ class CollectionPaginate
         return function (
             int $perPage = 15,
             string $pageName = 'page',
-            int $page = null,
-            int $total = null,
+            ?int $page = null,
+            ?int $total = null,
             array $options = [],
         ): LengthAwarePaginator {
             //

@@ -14,9 +14,17 @@ class DatabaseSeeder extends Seeder
 
         $startTime = microtime(true);
 
-        $this->call(BaseDatabaseSeeder::class);
-        $this->call(LangDatabaseSeeder::class);
-        $this->call(MasterDatabaseSeeder::class);
+        activity()->disableLogging();
+
+        $this->call(TranslationDatabaseSeeder::class);
+        $this->call(SettingDatabaseSeeder::class);
+        $this->call(PermissionDatabaseSeeder::class);
+        $this->call(RoleDatabaseSeeder::class);
+        $this->call(AdminDatabaseSeeder::class);
+
+        // $this->call(UserDatabaseSeeder::class);
+
+        activity()->enableLogging();
 
         $endTime = round(microtime(true) - $startTime, 2);
 

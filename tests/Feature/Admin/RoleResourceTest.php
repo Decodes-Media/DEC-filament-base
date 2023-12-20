@@ -1,12 +1,12 @@
 <?php
 
-use App\FilamentAdmin\Resources\RoleResource;
-use App\FilamentAdmin\Resources\RoleResource\Pages\CreateRole;
-use App\FilamentAdmin\Resources\RoleResource\Pages\EditRole;
-use App\FilamentAdmin\Resources\RoleResource\Pages\ListRoles;
-use App\FilamentAdmin\Resources\RoleResource\Pages\ViewRole;
-use App\Models\Base\Admin;
-use App\Models\Base\Role;
+use App\Filament\Admin\Resources\RoleResource;
+use App\Filament\Admin\Resources\RoleResource\Pages\CreateRole;
+use App\Filament\Admin\Resources\RoleResource\Pages\EditRole;
+use App\Filament\Admin\Resources\RoleResource\Pages\ListRoles;
+use App\Filament\Admin\Resources\RoleResource\Pages\ViewRole;
+use App\Models\Admin;
+use App\Models\Role;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Config;

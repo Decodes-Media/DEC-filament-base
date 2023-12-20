@@ -169,7 +169,12 @@ return [
         // MISS: App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Filament Panel Providers...
+         */
         App\Providers\Filament\AdminPanelProvider::class,
+        //
     ])->toArray(),
 
     /*

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'translation-navigation-label' => 'Terjemahan Situs',
+    'translation-navigation-label' => 'Terjemahan',
     'translation-label' => 'Terjemahan|Terjemahan',
     'group' => 'Grup',
     'key' => 'Kunci',

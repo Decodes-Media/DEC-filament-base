@@ -65,9 +65,10 @@ return [
             'system.*',
             'system.log_activity',
             'system.log_application',
-            'system.site_setting',
-            'system.site_health',
-            'system.site_backup',
+            'system.setting',
+            'system.translation',
+            'system.health',
+            'system.backup',
         ],
     ],
 
@@ -97,11 +98,13 @@ return [
     */
 
     'model_morphs' => [
-        \App\Models\Base\ActivityLog::class => 'Activity Log',
-        \App\Models\Base\Admin::class => 'Admin',
-        \App\Models\Base\Permission::class => 'Permission',
-        \App\Models\Base\Role::class => 'Role',
-        \App\Models\Base\User::class => 'User',
+        \App\Models\ActivityLog::class => 'Activity Log',
+        \App\Models\Admin::class => 'Admin',
+        \App\Models\LanguageLine::class => 'Language',
+        \App\Models\Permission::class => 'Permission',
+        \App\Models\Role::class => 'Role',
+        \App\Models\Setting::class => 'Setting',
+        \App\Models\User::class => 'User',
         \Spatie\TranslationLoader\LanguageLine::class => 'Language',
     ],
 

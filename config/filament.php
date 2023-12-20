@@ -71,4 +71,27 @@ return [
 
     'livewire_loading_delay' => 'default',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Our Custom Config
+    |--------------------------------------------------------------------------
+    */
+
+    'default_middlewares' => [
+        \Illuminate\Cookie\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        // \Filament\Http\Middleware\DisableBladeIconComponents::class,
+        \Kenepa\TranslationManager\Http\Middleware\SetLanguage::class,
+        \Filament\Http\Middleware\DispatchServingFilamentEvent::class,
+    ],
+
+    'default_auth_middlewares' => [
+        \Filament\Http\Middleware\Authenticate::class,
+    ],
+
 ];

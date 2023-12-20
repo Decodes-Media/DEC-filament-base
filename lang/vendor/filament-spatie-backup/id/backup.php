@@ -62,7 +62,7 @@ return [
 
             'navigation' => [
                 'group' => 'Sistem',
-                'label' => 'Cadangan Situs',
+                'label' => 'Cadangan',
             ],
         ],
     ],

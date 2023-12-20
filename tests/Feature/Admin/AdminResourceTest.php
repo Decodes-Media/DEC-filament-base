@@ -1,12 +1,12 @@
 <?php
 
-use App\FilamentAdmin\Resources\AdminResource;
-use App\FilamentAdmin\Resources\AdminResource\Pages\CreateAdmin;
-use App\FilamentAdmin\Resources\AdminResource\Pages\EditAdmin;
-use App\FilamentAdmin\Resources\AdminResource\Pages\ListAdmins;
-use App\FilamentAdmin\Resources\AdminResource\Pages\ViewAdmin;
-use App\Models\Base\Admin;
-use App\Models\Base\Role;
+use App\Filament\Admin\Resources\AdminResource;
+use App\Filament\Admin\Resources\AdminResource\Pages\CreateAdmin;
+use App\Filament\Admin\Resources\AdminResource\Pages\EditAdmin;
+use App\Filament\Admin\Resources\AdminResource\Pages\ListAdmins;
+use App\Filament\Admin\Resources\AdminResource\Pages\ViewAdmin;
+use App\Models\Admin;
+use App\Models\Role;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Config;

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Base\Admin;
-use App\Models\Base\User;
+use App\Models\Admin;
+use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -24,7 +24,7 @@ function user_id(string $guard = 'web'): int|string|null
     return Auth::guard($guard)->id();
 }
 
-function user_can(string $guard = 'web', array|string $abilities = null): bool
+function user_can(string $guard = 'web', array|string|null $abilities = null): bool
 {
     return user($guard)->can($abilities);
 }
@@ -34,7 +34,7 @@ function storage_url(string $path): string
     return Storage::disk('public')->url($path);
 }
 
-function is_request_for_api(Request $request = null): bool
+function is_request_for_api(?Request $request = null): bool
 {
     $request = $request ?: app(Request::class);
 
@@ -101,7 +101,7 @@ function ribuan(
 }
 
 function rupiah(
-    int|float|string $amount = null,
+    int|float|string|null $amount = null,
     int $decimals = 2,
     bool $trim = true,
     bool $plusSymbol = false,
@@ -139,7 +139,7 @@ function ribuan_en(
 }
 
 function rupiah_en(
-    int|float|string $amount = null,
+    int|float|string|null $amount = null,
     int $decimals = 2,
     bool $trim = true,
     bool $plusSymbol = false,
@@ -159,7 +159,7 @@ function re_ribuan_en(null|int|float|string $ribuan, bool $asInt = false): int|f
     return $asInt ? intval($r2) : floatval($r2);
 }
 
-function whatsappable_url(string|int $number, string $text = null): string
+function whatsappable_url(string|int $number, ?string $text = null): string
 {
     $number = preg_replace('/\D/', '', (string) $number); // digits only
 
