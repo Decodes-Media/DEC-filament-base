@@ -12,7 +12,7 @@
     <body class="d-flex flex-column h-100">
         <main role="main" class="flex-shrink-0">
           <div class="container">
-            <h1 class="mt-5">Sticky footer</h1>
+            <h1 class="mt-5 tw-bg-[#d9b4b4]">Sticky footer</h1>
             <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
           </div>
         </main>

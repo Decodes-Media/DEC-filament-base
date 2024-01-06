@@ -1,14 +1,16 @@
 @php
+    $seo_default = setting('seo_default');
+    $seo_type = @$type ?: 'website';
     $seo_title = config('app.name').' '.@$subtitle;
-    $seo_cover = @$cover_path ?: @$siteSetting->seo_default['cover_path'];
-    $seo_authr = @$author ?: @$siteSetting->seo_default['author'];
-    $seo_descr = @$description ?: @$siteSetting->seo_default['description'];
-    $seo_keywr = @$keywords ?: @$siteSetting->seo_default['keywords'];
+    $seo_cover = @$cover_path ?: @$seo_default['cover_path'] ?: '';
+    $seo_authr = @$author ?: @$seo_default['author'] ?: '';
+    $seo_descr = @$description ?: @$seo_default['description'] ?: '';
+    $seo_keywr = @$keywords ?: @$seo_default['keywords'] ?: '';
     $seo_keywr = is_array($seo_keywr) ? implode(', ', $seo_keywr) : $seo_keywr;
 @endphp
 
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="UTF-8" />
@@ -29,8 +31,14 @@
     <meta property="og:title" content="{{ $seo_title }}">
     <meta property="og:description" content="{{ $seo_descr }}">
     <meta property="og:url" content="{{ \URL::current() }}">
-    <meta property="og:image" content="/storage/{{ $seo_cover }}">
-    <meta property="og:type" content="Website" />
+    <meta property="og:image" content="{{ storage_url($seo_cover) }}">
+    <meta property="og:type" content="{{ $seo_type }}" />
+
+    <meta name="twitter:author" content="{{ $seo_authr }}">
+    <meta name="twitter:title" content="{{ $seo_title }}">
+    <meta name="twitter:description" content="{{ $seo_descr }}">
+    <meta name="twitter:image" content="{{ storage_url($seo_cover) }}">
+    <meta name="twitter:card" content="summary">
 
     <meta name="developer" content="Decodes Media">
 
@@ -40,27 +48,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Vendors -->
-    <!-- pass -->
+    <!-- --Put any global css here -->
 
     @vite('resources/sass/app.scss')
-
     @stack('pageStyles')
-
     @livewireStyles
 </head>
 
-<body class="fade-in">
-
+<body>
     <div id="app">
+        @unless(@$noheader)
+          <x-section.navbar />
+        @endunless
+        {{ $slot }}
+        @unless(@$nofooter)
+          <x-section.footer />
+        @endunless
     </div>
 
     <!-- JS Vendors -->
-    <!-- pass -->
+    <!-- --Put any global js here -->
 
     @vite('resources/js/app.js')
-
     @stack('pageScripts')
-
     @livewireScripts
 </body>
 

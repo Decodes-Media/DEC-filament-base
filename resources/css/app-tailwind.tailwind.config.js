@@ -10,7 +10,7 @@ export default {
   ],
   content: [
     './resources/views/client/**/*.blade.php',
-    // './resources/views/components/**/*.blade.php',
+    './resources/views/components/**/*.blade.php',
     // './resources/views/emails/**/*.blade.php',
     // './resources/views/vendor/**/*.blade.php',
   ],

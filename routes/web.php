@@ -15,8 +15,11 @@ Route::get('/', [MiscWebController::class, 'index'])
 Route::view('/empty', 'empty')
     ->name('empty');
 
-Route::view('/test-b4-tw', 'client.test-b4-tw.blade.php')
+Route::view('/test-b4-tw', 'client.test-b4-tw')
     ->name('test-b4-tw');
+
+Route::view('/lorem', 'client.lorem')
+    ->name('lorem');
 
 Route::redirect('/login', '/')
     ->name('login');
