@@ -3,14 +3,15 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\RoleResource\Pages;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Models\Base\Permission;
+use App\Models\Base\Role;
 use App\Support\FilamentBase;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 class RoleResource extends Resource
@@ -40,6 +41,12 @@ class RoleResource extends Resource
         return __('permission.roles');
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('guard_name', 'admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -47,7 +54,7 @@ class RoleResource extends Resource
             Forms\Components\Section::make(__('admin.role'))
                 ->schema([
                     Forms\Components\TextInput::make('name')
-                        ->label(__('admin.name'))
+                        ->hiddenLabel()
                         ->columnSpanFull()
                         ->required()
                         ->unique(ignoreRecord: true),
@@ -57,7 +64,7 @@ class RoleResource extends Resource
             Forms\Components\Section::make(__('admin.users'))
                 ->schema([
                     Forms\Components\Select::make('users')
-                        ->label(__('admin.attach_to'))
+                        ->hiddenLabel()
                         ->columnSpanFull()
                         ->relationship('users', 'name', fn ($query) => //
                             $query->take(config('base.records_limit.admins')),
@@ -178,7 +185,9 @@ class RoleResource extends Resource
 
     protected static function getGroupedPermissions(): Collection
     {
-        return Permission::all()
+        return Permission::query()
+            ->where('guard_name', 'admin')
+            ->get()
             ->sortBy('display_order')
             ->groupBy(function ($item) {
                 //

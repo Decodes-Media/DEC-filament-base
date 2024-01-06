@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ActivityLogResource\Pages;
-use App\Models\ActivityLog;
+use App\Models\Base\ActivityLog;
 use App\Support\FilamentBase;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -25,6 +25,11 @@ class ActivityLogResource extends Resource
     public static function getNavigationGroup(): ?string
     {
         return __('permission.system');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('permission.log_activity');
     }
 
     public static function getModelLabel(): string

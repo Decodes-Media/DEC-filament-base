@@ -30,7 +30,7 @@ class SettingPage extends Page implements HasForms
 
     public ?array $data = [];
 
-    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Start;
 
     public static function getSlug(): string
     {

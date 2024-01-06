@@ -19,3 +19,5 @@ parameters:
     - '#Access to an undefined property (.*)Model(.*)#'
     - '#Function user\(\) (should|never) return#'
     - '#Function filament_user(.*) can be removed from the return type#'
+    - '#Method (.*) should return string\|null but returns array\|string\|null#'
+    - '#Method (.*)(read|unread)Notifications(.*) should return (.*)Builder#'

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Macros\CollectionPaginate;
-use App\Models\PersonalAccessToken;
+use App\Models\Base\PersonalAccessToken;
+use App\Support\CollectionPaginateMacro;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
 
-        Collection::macro('paginate', app(CollectionPaginate::class)());
+        Collection::macro('paginate', app(CollectionPaginateMacro::class)());
 
         Relation::enforceMorphMap(array_flip(config('base.model_morphs')));
 

@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Admin;
-use App\Models\Setting;
+use App\Models\App\Admin;
+use App\Models\Base\Setting;
 use Illuminate\Database\Seeder;
 
 class AdminDatabaseSeeder extends Seeder

@@ -58,6 +58,12 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'staging' => [
+            'driver' => 'stack',
+            'channels' => ['daily', 'slack'],
+            'ignore_exceptions' => false,
+        ],
+
         'development' => [
             'driver' => 'stack',
             'channels' => ['daily'],

@@ -3,8 +3,8 @@
 namespace App\Filament\Admin\Resources\RoleResource\Pages;
 
 use App\Filament\Admin\Resources\RoleResource;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Models\Base\Permission;
+use App\Models\Base\Role;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
@@ -46,7 +46,10 @@ class EditRole extends EditRecord
             'guard_name' => $data['guard_name'],
         ]);
 
-        $permissionIds = Permission::whereIn('name', $data['permissions'])->pluck('id');
+        $permissionIds = Permission::query()
+            ->where('guard_name', 'admin')
+            ->whereIn('name', $data['permissions'])
+            ->pluck('id');
 
         $record->permissions()->sync($permissionIds);
 

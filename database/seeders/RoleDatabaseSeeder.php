@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Role;
+use App\Models\Base\Role;
 use Illuminate\Database\Seeder;
 
 class RoleDatabaseSeeder extends Seeder

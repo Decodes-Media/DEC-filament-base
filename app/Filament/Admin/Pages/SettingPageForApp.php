@@ -2,10 +2,11 @@
 
 namespace App\Filament\Admin\Pages;
 
-use App\Models\Setting;
+use App\Models\Base\Setting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property \Filament\Forms\ComponentContainer $form
@@ -37,11 +38,11 @@ class SettingPageForApp extends SettingPage
                         Forms\Components\TextInput::make('name')
                             ->label(__('admin.name'))
                             ->required()
-                            ->disabled($this->disableForm),
+                            ->disabled(),
                         Forms\Components\TextInput::make('short_name')
                             ->label(__('admin.short_name'))
                             ->required()
-                            ->disabled($this->disableForm),
+                            ->disabled(),
                         Forms\Components\Select::make('locale')
                             ->label(__('admin.locale'))
                             ->options([
@@ -52,7 +53,6 @@ class SettingPageForApp extends SettingPage
                             ->disabled($this->disableForm),
                         Forms\Components\TextInput::make('backup_password')
                             ->label(__('admin.backup_file_password'))
-                            ->password()
                             ->nullable()
                             ->disabled($this->disableForm),
                     ]),
@@ -61,9 +61,13 @@ class SettingPageForApp extends SettingPage
 
     public function submit(): void
     {
-        foreach ($this->form->getState() as $key => $value) {
-            Setting::set($key, $value);
+        $changes = array_diff($this->form->getState(), setting('app'));
+
+        foreach ($changes as $key => $value) {
+            Setting::set("app.{$key}", $value);
         }
+
+        Cache::forget(config('setting.cache.key'));
 
         $this->redirect(static::getUrl(['save' => 'ok']));
     }

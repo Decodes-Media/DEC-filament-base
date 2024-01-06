@@ -6,6 +6,8 @@ All notable changes to `decodes/filament-base` will be documented in this file.
 
 ### Added
 
-* Laravel with pest, larasan and filamentphp
 * CRUD for admin role and permission
 * API using kodepandai/api-response
+* Base packages for filament
+* Filament v3 with multi panel
+* Laravel v10 + pest v2 + phpstan

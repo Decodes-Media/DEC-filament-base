@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Resources\AdminResource\Pages;
 
 use App\Filament\Admin\Resources\AdminResource;
-use App\Models\Admin;
+use App\Models\App\Admin;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;

@@ -2,10 +2,11 @@
 
 namespace App\Filament\Admin\Pages;
 
-use App\Models\Setting;
+use App\Models\Base\Setting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property \Filament\Forms\ComponentContainer $form
@@ -64,9 +65,13 @@ class SettingPageForSite extends SettingPage
 
     public function submit(): void
     {
-        foreach ($this->form->getState() as $key => $value) {
-            Setting::set($key, $value);
+        $changes = array_diff($this->form->getState(), setting('app'));
+
+        foreach ($changes as $key => $value) {
+            Setting::set("app.{$key}", $value);
         }
+
+        Cache::forget(config('setting.cache.key'));
 
         $this->redirect(static::getUrl(['save' => 'ok']));
     }

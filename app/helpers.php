@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Admin;
-use App\Models\User;
+use App\Models\App\Admin;
+use App\Models\App\User;
 use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -60,6 +60,11 @@ function filament_user(): Admin|User|null
  | UTILS
  |--------------------------------------------------------------------------
  */
+
+function trim_space(string $str): string
+{
+    return preg_replace('/\s+/', ' ', $str);
+}
 
 function array_mirror(Collection|array $array, bool $excludeEmpty = true): array
 {

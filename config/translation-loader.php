@@ -15,7 +15,7 @@ return [
      * that extends Spatie\TranslationLoader\LanguageLine.
      */
     // 'model' => Spatie\TranslationLoader\LanguageLine::class,
-    'model' => App\Models\LanguageLine::class,
+    'model' => \App\Models\Base\LanguageLine::class,
 
     /*
      * This is the translation manager which overrides the default Laravel `translation.loader`

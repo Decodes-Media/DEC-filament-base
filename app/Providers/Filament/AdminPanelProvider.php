@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Assets\Js;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Gate;
@@ -18,6 +19,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->maxContentWidth(MaxWidth::Full)
             ->id('admin')
             ->domain(config('base.route.admin_domain'))
             ->path(config('base.route.admin_path'))
@@ -25,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop(true)
             ->viteTheme('resources/css/filament-base-theme.css')
             ->login()
-            // ->login(\App\Livewire\Auth\FilamentLogin::class)
+            ->login(\App\Support\FilamentBase\Pages\LoginPage::class)
             // ->registration()
             // ->passwordReset()
             // ->emailVerification()

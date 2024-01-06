@@ -1,3 +1,8 @@
+# Custom
+.DS_Store
+todo.txt
+
+# https://github.com/laravel/laravel/blob/10.x/.gitignore
 /.phpunit.cache
 /node_modules
 /public/build
@@ -17,5 +22,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-todo.txt
-.DS_Store

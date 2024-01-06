@@ -10,7 +10,7 @@ return [
     | Auto-save every time the application shuts down
     |
     */
-    'auto_save' => true,
+    'auto_save' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
     'cache' => [
-        'enabled' => false,
+        'enabled' => true,
         'key' => 'setting',
         'ttl' => 3600,
         'auto_clear' => true,

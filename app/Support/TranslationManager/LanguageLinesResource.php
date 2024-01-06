@@ -2,18 +2,23 @@
 
 namespace App\Support\TranslationManager;
 
+use App\Models\Base\LanguageLine;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Kenepa\TranslationManager\Filters\NotTranslatedFilter;
 use Kenepa\TranslationManager\Resources\LanguageLineResource as Resource;
-use Spatie\TranslationLoader\LanguageLine;
 
 class LanguageLinesResource extends Resource
 {
     protected static ?string $slug = 'system/translations';
 
     protected static ?int $navigationSort = 3;
+
+    public static function getModel(): string
+    {
+        return config('translation-loader.model', LanguageLine::class);
+    }
 
     public static function table(Table $table): Table
     {
