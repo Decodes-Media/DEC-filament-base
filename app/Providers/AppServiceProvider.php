@@ -11,7 +11,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
 use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,7 +33,5 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(App::isLocal()); // safe on production
 
         // Paginator::useTailwind(); // or useBootstrapFive();
-
-        // View::share('siteSetting', app(SiteSetting::class));
     }
 }

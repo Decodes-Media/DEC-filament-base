@@ -36,8 +36,12 @@
     "spatie/laravel-ignition": "^2.0"
   },
   "autoload": {
+    "exclude-from-classmap": [
+      "vendor/spatie/laravel-translation-loader/src/LanguageLine.php"
+    ],
     "files": [
-      "app/helpers.php"
+      "app/helpers.php",
+      "overrides/LanguageLine.php"
     ],
     "psr-4": {
       "App\\": "app/",

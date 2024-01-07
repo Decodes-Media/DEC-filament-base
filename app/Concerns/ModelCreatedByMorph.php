@@ -13,7 +13,7 @@ trait ModelCreatedByMorph
             $user = static::creatorBy();
         }
 
-        $user = @$user ?: filament_user() ?: web_user();
+        $user = @$user ?: filament_user() ?: user('web');
 
         self::creating(function (Model $record) use ($user) {
             $record->created_by_id = $user->id;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Policies\App;
+namespace App\Policies\Main;
 
-use App\Models\App\User;
+use App\Models\Main\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Auth\Access\Authorizable;
 

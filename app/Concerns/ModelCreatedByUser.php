@@ -2,7 +2,7 @@
 
 namespace App\Concerns;
 
-use App\Models\App\User;
+use App\Models\Main\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -10,7 +10,7 @@ trait ModelCreatedByUser
 {
     public static function bootModelCreatedByUser(): void
     {
-        $id = web_user();
+        $id = user();
 
         self::creating(fn (Model $record) => $record->created_by_id = $id);
         self::updating(fn (Model $record) => $record->updated_by_id = $id);

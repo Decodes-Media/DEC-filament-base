@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Base;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -22,5 +22,7 @@ class SettingDatabaseSeeder extends Seeder
         foreach ($settings as $key => $value) {
             Setting::set("{$group}.{$key}", $value);
         }
+
+        Setting::clearCache();
     }
 }

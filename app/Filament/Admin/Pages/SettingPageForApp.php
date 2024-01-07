@@ -6,7 +6,6 @@ use App\Models\Base\Setting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\Facades\Cache;
 
 /**
  * @property \Filament\Forms\ComponentContainer $form
@@ -67,7 +66,7 @@ class SettingPageForApp extends SettingPage
             Setting::set("app.{$key}", $value);
         }
 
-        Cache::forget(config('setting.cache.key'));
+        Setting::clearCache();
 
         $this->redirect(static::getUrl(['save' => 'ok']));
     }

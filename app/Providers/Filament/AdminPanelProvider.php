@@ -23,7 +23,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->domain(config('base.route.admin_domain'))
             ->path(config('base.route.admin_path'))
-            ->favicon(asset('favicox.ico'))
+            ->favicon(asset('faviconx.ico'))
             ->sidebarCollapsibleOnDesktop(true)
             ->viteTheme('resources/css/filament-base-theme.css')
             ->login()

@@ -94,21 +94,23 @@ return [
     */
 
     'model_morphs' => [
-        \App\Models\App\User::class => 'User',
-        \App\Models\App\Admin::class => 'Admin',
         \App\Models\Base\ActivityLog::class => 'Activity Log',
         \App\Models\Base\LanguageLine::class => 'Language',
         \App\Models\Base\Permission::class => 'Permission',
         \App\Models\Base\Role::class => 'Role',
         \App\Models\Base\Setting::class => 'Setting',
+        \App\Models\Main\User::class => 'User',
+        \App\Models\Main\Admin::class => 'Admin',
+        \Spatie\TranslationLoader\LanguageLine::class => 'Language',
     ],
 
     'model_policies' => [
-        \App\Models\App\Admin::class => \App\Policies\App\AdminPolicy::class,
-        \App\Models\App\User::class => \App\Policies\App\UserPolicy::class,
         \App\Models\Base\ActivityLog::class => \App\Policies\Base\ActivityLogPolicy::class,
+        \App\Models\Base\LanguageLine::class => \App\Policies\Base\LanguageLinePolicy::class,
         \App\Models\Base\Role::class => \App\Policies\Base\RolePolicy::class,
         \App\Models\Base\Setting::class => \App\Policies\Base\SettingPolicy::class,
+        \App\Models\Main\Admin::class => \App\Policies\Main\AdminPolicy::class,
+        \App\Models\Main\User::class => \App\Policies\Main\UserPolicy::class,
     ],
 
     /*

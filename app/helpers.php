@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\App\Admin;
-use App\Models\App\User;
+use App\Models\Main\Admin;
+use App\Models\Main\User;
 use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -31,7 +31,10 @@ function user_can(string $guard = 'web', array|string|null $abilities = null): b
 
 function storage_url(string $path): string
 {
-    return Storage::disk('public')->url($path);
+    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    $disk = Storage::disk('public');
+
+    return $disk->url($path);
 }
 
 function is_request_for_api(?Request $request = null): bool
@@ -53,6 +56,11 @@ function is_request_for_api(?Request $request = null): bool
 function filament_user(): Admin|User|null
 {
     return Filament::auth()->user();
+}
+
+function filament_user_id(): int|string|null
+{
+    return Filament::auth()->id();
 }
 
 /*

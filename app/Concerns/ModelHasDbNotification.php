@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Concerns;
 
 use App\Models\Base\DbNotification;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -10,7 +10,7 @@ use Illuminate\Notifications\RoutesNotifications;
 /**
  * @see vendor/laravel/framework/src/Illuminate/Notifications/HasDatabaseNotifications.php
  */
-trait ModelWithDbNotification
+trait ModelHasDbNotification
 {
     use RoutesNotifications;
 

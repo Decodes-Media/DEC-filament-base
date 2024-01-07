@@ -70,11 +70,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\App\User::class,
+            'model' => \App\Models\Main\User::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\App\Admin::class,
+            'model' => \App\Models\Main\Admin::class,
         ],
     ],
 
@@ -99,13 +99,13 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'app_users',
+            'provider' => 'main_users',
             'table' => 'base_password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
         'admins' => [
-            'provider' => 'app_admins',
+            'provider' => 'main_admins',
             'table' => 'base_password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

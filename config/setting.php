@@ -51,7 +51,7 @@ return [
     */
     'database' => [
         'connection' => null,
-        'table' => 'settings',
+        'table' => 'base_settings',
         'key' => 'key',
         'value' => 'value',
     ],

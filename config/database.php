@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'migrations' => 'migrations',
+    'migrations' => 'lara_migrations',
 
     /*
     |--------------------------------------------------------------------------

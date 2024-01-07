@@ -13,6 +13,8 @@ class Setting extends Model implements ModelWithLogActivity
     use LogsActivity;
     use ModelActivityLogOptions;
 
+    protected $table = 'base_settings';
+
     protected $fillable = [
         'key',
         'value',
