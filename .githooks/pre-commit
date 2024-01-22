@@ -1,1 +1,4 @@
+#!/bin/sh
+npm run build
+git add public/build
 composer test
